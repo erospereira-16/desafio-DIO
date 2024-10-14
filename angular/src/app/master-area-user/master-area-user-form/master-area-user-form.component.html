@@ -1,0 +1,71 @@
+<div class="container py-3">
+  <div class="row gx-5">
+    <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+      <div class="text-center bg-primary text-white">Cadastro de usuário</div>
+      <div class="p-3 border bg-white">
+        <div class="py-1">
+          <form [formGroup]='form'>
+            <div class="form-group">
+              <label>Nome do usuário:</label>
+              <input type="text" maxlength="256" formControlName="userName"
+                placeholder="Informe o nome do usuário..." class="form-control">
+            </div>
+            <div *ngIf="submitted && f.userName.errors">
+              <p *ngIf="f.userName.errors.required" class="text-danger small">* Informe o nome do usuário</p>
+            </div>
+
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="text" maxlength="256" formControlName="email"
+                placeholder="Informe email..." class="form-control">
+            </div>
+            <div *ngIf="submitted && f.email.errors">
+              <p *ngIf="f.email.errors.required" class="text-danger small">* Informe o email do usuário</p>
+            </div>
+            <div class="form-group">
+              <label>Telefone:</label>
+              <input type="text" formControlName="phone" placeholder="Informe o telefone de contato..."
+                class="form-control" mask="(00)00000-0000">
+            </div>
+            <div class="form-group">
+              <label>Selecione o perfil:</label>
+              <select class="form-control form-select" formControlName="role">
+                <option [value]="role.name" *ngFor="let role of roles">{{role.name}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f.role.errors">
+              <p *ngIf="f.role.errors.required" class="text-danger small">* Perfil é obrigatório</p>
+            </div>
+            <div class="form-group">
+              <label>Selecione o estabelecimento:</label>
+              <select class="form-control form-select" formControlName="establishment">
+                <option [value]="establishment.id" *ngFor="let establishment of establishments">{{establishment.name}}</option>
+              </select>
+            </div>
+            <div *ngIf="submitted && f.establishment.errors">
+              <p *ngIf="f.establishment.errors.required" class="text-danger small">* Estabelecimento é obrigatório</p>
+            </div>
+          </form>
+
+          <div class="mt-2">
+            <button class="btn btn-primary d-inline-flex align-items-center" (click)="onSave()"> Salvar
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-floppy ms-1" viewBox="0 0 16 16">
+                <path d="M11 2H9v3h2z" />
+                <path
+                  d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z" />
+              </svg></button>
+            <button type="button" class="btn btn-primary d-inline-flex align-items-center ms-2" (click)="onCancel()">
+              Voltar
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-left ms-1" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
